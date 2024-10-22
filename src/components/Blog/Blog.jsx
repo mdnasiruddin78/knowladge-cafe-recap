@@ -4,7 +4,7 @@ import { FaBookmark } from "react-icons/fa6";
 
 const Blog = ({blog,hendleAddToBookmark,hendleMarkAsRead}) => {
 
-    const {title,cover,author_img,author,posted_date,reading_time,hashtags} = blog
+    const {title,id,cover,author_img,author,posted_date,reading_time,hashtags} = blog
 
     return (
         <div className='space-y-3'>
@@ -31,7 +31,7 @@ const Blog = ({blog,hendleAddToBookmark,hendleMarkAsRead}) => {
                     key={idx}><a href=''>{has}</a></span>)
                 }
             </p>
-            <button onClick={() => hendleMarkAsRead(reading_time)} className=
+            <button onClick={() => hendleMarkAsRead(id,reading_time)} className=
             'text-blue-700 underline font-bold'>Mark as read</button>
         </div>
     );

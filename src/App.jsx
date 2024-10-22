@@ -16,9 +16,12 @@ function App() {
 
   const [readingTime, setReadingTime] = useState(0)
 
-  const hendleMarkAsRead = time => {
+  const hendleMarkAsRead = (id,time) => {
     const newReadingTime = readingTime + time;
     setReadingTime(newReadingTime)
+    // remove bookmark title
+    const remainingBookmarks = bookmarks.filter(bookmark => bookmark.id !== id)
+    setBookmarks(remainingBookmarks)
   }
 
   return (

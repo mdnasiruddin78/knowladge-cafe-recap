@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import { FaBookmark } from "react-icons/fa6";
 
 
-const Blog = ({blog,hendleAddToBookmark}) => {
+const Blog = ({blog,hendleAddToBookmark,hendleMarkAsRead}) => {
 
     const {title,cover,author_img,author,posted_date,reading_time,hashtags} = blog
 
     return (
-        <div className='space-y-5'>
+        <div className='space-y-3'>
             <img src={cover} alt=""/>
             <div className='flex gap-3 justify-between items-center'>
                 <div className='flex space-x-2'>
@@ -18,24 +18,29 @@ const Blog = ({blog,hendleAddToBookmark}) => {
                     <p className='text-gray-500'>{posted_date}</p>
                 </div>
                 </div>
-                <div className='flex space-x-3'>
-                    <p className='text-gray-500'>{reading_time} read</p>
+                <div className='flex'>
+                    <p className='text-gray-500'>{reading_time} min read</p>
                     <button onClick={()=>hendleAddToBookmark(blog)} className='text-green-500'>
                         <FaBookmark /></button>
                 </div>
             </div>
             <h3 className='text-4xl'>{title}</h3>
-            {
-                hashtags.map((has , idx) => <span className='text-[#5aa7ff]'
-                key={idx}><a href=''>{has}</a></span>)
-            }
+            <p>
+                {
+                    hashtags.map((has , idx) => <span className='text-[#5aa7ff]'
+                    key={idx}><a href=''>{has}</a></span>)
+                }
+            </p>
+            <button onClick={() => hendleMarkAsRead(reading_time)} className=
+            'text-blue-700 underline font-bold'>Mark as read</button>
         </div>
     );
 };
 
 Blog.propTypes = {
     blog: PropTypes.object.isRequired,
-    hendleAddToBookmark: PropTypes.func
+    hendleAddToBookmark: PropTypes.func,
+    hendleMarkAsRead: PropTypes.func
 }
 
 export default Blog;

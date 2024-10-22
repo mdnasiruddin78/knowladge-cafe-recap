@@ -14,13 +14,20 @@ function App() {
        setBookmarks(newBookmarks)
   }
 
+  const [readingTime, setReadingTime] = useState(0)
+
+  const hendleMarkAsRead = time => {
+    const newReadingTime = readingTime + time;
+    setReadingTime(newReadingTime)
+  }
 
   return (
     <>
      <Header></Header>
-     <div className='md:flex max-w-6xl mx-auto'>
-        <Blogs hendleAddToBookmark={hendleAddToBookmark}></Blogs>
-        <Bookmarks bookmarks={bookmarks}></Bookmarks>
+     <div className='md:flex max-w-6xl mx-auto space-x-4'>
+        <Blogs hendleAddToBookmark={hendleAddToBookmark}
+         hendleMarkAsRead={hendleMarkAsRead}></Blogs>
+        <Bookmarks bookmarks={bookmarks} readingTime={readingTime}></Bookmarks>
      </div>
     </>
   )
